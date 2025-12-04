@@ -208,18 +208,6 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 -- use jk to exit insert mode
 vim.keymap.set('i', 'jk', '<ESC>', { desc = 'Exit insert mode with jk' })
 
--- tabs
-vim.keymap.set('n', '<leader><tab>o', '<cmd>tabonly<CR>', { desc = 'Close other tabs' }) -- close other tabs
-vim.keymap.set('n', '<leader><tab>d', '<cmd>tabclose<CR>', { desc = 'Close current tab' }) -- close current tab
-vim.keymap.set('n', '<leader><tab>n', '<cmd>tabn<CR>', { desc = 'Go to next tab' }) --  go to next tab
-vim.keymap.set('n', '<leader><tab>p', '<cmd>tabp<CR>', { desc = 'Go to previous tab' }) --  go to previous tab
-
--- buffers
-vim.keymap.set('n', '<leader>bo', ':%bd|e#|bd#<CR>', { desc = 'Delete other buffers' }) -- close other buffers
-vim.keymap.set('n', '<leader>bd', ':bd<CR>', { desc = 'Delete buffer' }) -- close current buffer
-vim.keymap.set('n', '<S-l>', ':bnext<CR>', { desc = 'Next buffer' }) -- go to next buffer
-vim.keymap.set('n', '<S-h>', ':bprevious<CR>', { desc = 'Previous buffer' }) -- go to previous buffer
-
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
