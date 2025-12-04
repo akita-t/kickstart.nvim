@@ -91,7 +91,7 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 -- Set to true if you have a Nerd Font installed and selected in the terminal
-vim.g.have_nerd_font = false
+vim.g.have_nerd_font = true
 
 -- [[ Setting options ]]
 -- See `:help vim.o`
@@ -105,7 +105,7 @@ vim.o.number = true
 -- vim.o.relativenumber = true
 
 -- Enable mouse mode, can be useful for resizing splits for example!
-vim.o.mouse = 'a'
+vim.o.mouse = ''
 
 -- Don't show the mode, since it's already in the status line
 vim.o.showmode = false
@@ -185,10 +185,10 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
 -- TIP: Disable arrow keys in normal mode
--- vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
--- vim.keymap.set('n', '<right>', '<cmd>echo "Use l to move!!"<CR>')
--- vim.keymap.set('n', '<up>', '<cmd>echo "Use k to move!!"<CR>')
--- vim.keymap.set('n', '<down>', '<cmd>echo "Use j to move!!"<CR>')
+vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
+vim.keymap.set('n', '<right>', '<cmd>echo "Use l to move!!"<CR>')
+vim.keymap.set('n', '<up>', '<cmd>echo "Use k to move!!"<CR>')
+vim.keymap.set('n', '<down>', '<cmd>echo "Use j to move!!"<CR>')
 
 -- Keybinds to make split navigation easier.
 --  Use CTRL+<hjkl> to switch between windows
@@ -204,6 +204,21 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 -- vim.keymap.set("n", "<C-S-l>", "<C-w>L", { desc = "Move window to the right" })
 -- vim.keymap.set("n", "<C-S-j>", "<C-w>J", { desc = "Move window to the lower" })
 -- vim.keymap.set("n", "<C-S-k>", "<C-w>K", { desc = "Move window to the upper" })
+
+-- use jk to exit insert mode
+vim.keymap.set('i', 'jk', '<ESC>', { desc = 'Exit insert mode with jk' })
+
+-- tabs
+vim.keymap.set('n', '<leader><tab>o', '<cmd>tabonly<CR>', { desc = 'Close other tabs' }) -- close other tabs
+vim.keymap.set('n', '<leader><tab>d', '<cmd>tabclose<CR>', { desc = 'Close current tab' }) -- close current tab
+vim.keymap.set('n', '<leader><tab>n', '<cmd>tabn<CR>', { desc = 'Go to next tab' }) --  go to next tab
+vim.keymap.set('n', '<leader><tab>p', '<cmd>tabp<CR>', { desc = 'Go to previous tab' }) --  go to previous tab
+
+-- buffers
+vim.keymap.set('n', '<leader>bo', ':%bd|e#|bd#<CR>', { desc = 'Delete other buffers' }) -- close other buffers
+vim.keymap.set('n', '<leader>bd', ':bd<CR>', { desc = 'Delete buffer' }) -- close current buffer
+vim.keymap.set('n', '<S-l>', ':bnext<CR>', { desc = 'Next buffer' }) -- go to next buffer
+vim.keymap.set('n', '<S-h>', ':bprevious<CR>', { desc = 'Previous buffer' }) -- go to previous buffer
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
@@ -975,10 +990,14 @@ require('lazy').setup({
   --
   -- require 'kickstart.plugins.debug',
   -- require 'kickstart.plugins.indent_line',
-  -- require 'kickstart.plugins.lint',
-  -- require 'kickstart.plugins.autopairs',
-  -- require 'kickstart.plugins.neo-tree',
-  -- require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
+  require 'kickstart.plugins.lint',
+  require 'kickstart.plugins.autopairs',
+  require 'kickstart.plugins.neo-tree',
+  require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
+  -- require 'kickstart.plugins.bufferline',
+  require 'kickstart.plugins.dial',
+  require 'kickstart.plugins.hlchunk',
+  -- require 'kickstart.plugins.oil',
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    This is the easiest way to modularize your config.
